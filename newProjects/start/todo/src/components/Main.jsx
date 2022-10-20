@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import Input from './Input';
 import InputForm from './InputForm';
 import List from './List';
 
@@ -60,7 +59,6 @@ const setFilter = (e) => {
       <Header setFilter={setFilter}/>
         <List changeStatus={changeStatus} list={todos} key={Math.random()} removeTodos={removeTodos}/>
         <InputForm addTodos={addTodos}/>
-      <Input/>
     </div>
   )
 }
