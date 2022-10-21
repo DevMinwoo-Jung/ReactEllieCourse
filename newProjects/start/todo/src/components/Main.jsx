@@ -56,7 +56,7 @@ const setFilter = (e) => {
 }
 
   return (
-    <div className='m-auto border w-1/2 absolute top-1/4	left-2/4 -translate-y-2/4 -translate-x-2/4'>
+    <div className='m-auto border h-80 w-1/2 absolute top-1/3	left-2/4 -translate-y-2/4 -translate-x-2/4'>
       <Header setFilter={setFilter}/>
         <List changeStatus={changeStatus} list={todos} key={Math.random()} removeTodos={removeTodos}/>
         <InputForm addTodos={addTodos}/>

@@ -1,8 +1,9 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import RemoveButton from './RemoveButton';
+import { AiOutlineCheckSquare, AiFillCheckSquare } from 'react-icons/ai';
 
 export interface dataType {
-  isComplete: string,
+  isComplete: any,
   title: string,
 }
 
@@ -27,8 +28,7 @@ const Item:FC<ItemType> = ({parentKey, data, onRemoveTodo, onChangeStatus}) => {
 
   return (
     <div>
-      <button onClick={doChangeStatus}>완료했슈</button>
-      <span>{isComplete}</span>
+      <button onClick={doChangeStatus}>{isComplete === 'true' ? <AiFillCheckSquare/> : <AiOutlineCheckSquare/>}</button>
       <span>{title}</span>
       <RemoveButton removeTodo={removeTodo}/>
     </div>
