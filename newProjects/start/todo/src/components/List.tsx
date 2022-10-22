@@ -12,7 +12,6 @@ const List:FC<Todo> = ({changeStatus, list, removeTodos}) => {
   const data = [...list];
 
   const onRemoveTodo = (e:any) => {
-    console.log(e);
     removeTodos(e);
   }
 
@@ -23,8 +22,8 @@ const List:FC<Todo> = ({changeStatus, list, removeTodos}) => {
   return (
     <div>
       {
-        data.map((element:any) => {
-          return <div onClick={onChangeStatus}><Item data={element} key={element.key} onRemoveTodo={onRemoveTodo}/></div>
+        data.map((element:any, index) => {
+          return <Item onChangeStatus={onChangeStatus} data={element} parentKey={index} key={index} onRemoveTodo={onRemoveTodo}/>
         })
       }
     </div>

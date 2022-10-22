@@ -4,24 +4,30 @@ import RemoveButton from './RemoveButton';
 export interface dataType {
   isComplete: string,
   title: string,
-  key: number,
 }
 
 interface ItemType {
   data: dataType,
-  onRemoveTodo: (param: number) => void
+  onRemoveTodo: (param: number) => void,
+  onChangeStatus: (key:number) => void,
+  parentKey: number,
 }
 
-const Item:FC<ItemType> = ({data, onRemoveTodo}) => {
-  const { isComplete ,title, key } = data;
-
+const Item:FC<ItemType> = ({parentKey, data, onRemoveTodo, onChangeStatus}) => {
+  const { isComplete ,title } = data;
   const removeTodo = () => {
-    onRemoveTodo(key);
-    console.log(key);
+    onRemoveTodo(parentKey);
+    console.log(parentKey);
+  }
+
+  const doChangeStatus = () => {
+    onChangeStatus(parentKey);
+    console.log(parentKey);
   }
 
   return (
-    <div key={key}>
+    <div>
+      <button onClick={doChangeStatus}>완료했슈</button>
       <span>{isComplete}</span>
       <span>{title}</span>
       <RemoveButton removeTodo={removeTodo}/>

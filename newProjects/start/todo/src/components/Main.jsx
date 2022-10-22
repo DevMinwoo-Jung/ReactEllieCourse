@@ -12,6 +12,7 @@ const Main = () => {
       fetch('./mock/todo.json')
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if(todosFilter === 'ALL'){
           setTodos(data);
         } else if (todosFilter === 'Active') {
@@ -28,7 +29,8 @@ const Main = () => {
 }, [todosFilter]);
 
 const removeTodos = (e) => {
-  setTodos([...todos].filter((element) => element.key !== e))
+  console.log(e);
+  setTodos([...todos].filter((element, index) => index !== e));
 }
 
 const addTodos = (e) => {
@@ -36,8 +38,12 @@ const addTodos = (e) => {
 }
 
 const changeStatus = (e) => {
-  console.log(e)
-  // setTodos((prev) => [...prev, {...prev}])
+  console.log(e);
+  console.log(todos[e].isComplete)
+  setTodos([...todos], 
+    todos[e].isComplete === 'true' 
+    ? todos[e].isComplete = 'false' 
+    : todos[e].isComplete = 'true');
 }
 
 const setFilter = (e) => {

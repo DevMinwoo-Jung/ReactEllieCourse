@@ -17,7 +17,6 @@ const InputForm:FC<InputFormType> = ({addTodos}) => {
     addTodos({
       "isComplete": "false",
       "title": `${addTodo}`,
-      "key": Math.random()
     });
     setAddTodo('');
   }
