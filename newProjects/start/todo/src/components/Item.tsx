@@ -1,21 +1,30 @@
 import React, { FC } from 'react'
+import RemoveButton from './RemoveButton';
 
-interface dataType {
-  isComplete: boolean,
+export interface dataType {
+  isComplete: string,
   title: string,
+  key: number,
 }
 
 interface ItemType {
-  data: dataType
+  data: dataType,
+  onRemoveTodo: (param: number) => void
 }
 
-const Item:FC<ItemType> = ({data}) => {
-  const { isComplete ,title } = data;
+const Item:FC<ItemType> = ({data, onRemoveTodo}) => {
+  const { isComplete ,title, key } = data;
+
+  const removeTodo = () => {
+    onRemoveTodo(key);
+    console.log(key);
+  }
 
   return (
-    <div>
+    <div key={key}>
       <span>{isComplete}</span>
       <span>{title}</span>
+      <RemoveButton removeTodo={removeTodo}/>
     </div>
   )
 }

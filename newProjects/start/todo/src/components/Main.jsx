@@ -11,22 +11,28 @@ const Main = () => {
     fetch('./mock/todo.json')
     .then((res) => res.json())
     .then((data) => {
-      console.log('------get Data-----');
       setTodos(data);
     })
     .catch(() => {
       console.error('에러났슈')
     })
     return () => {
-      console.log('-------Unmount------');
     };
 }, []);
+
+const removeTodos = (e) => {
+  setTodos([...todos].filter((element) => element.key !== e))
+}
+
+const addTodos = (e) => {
+  setTodos((prev) => [...prev, e])
+}
 
   return (
     <div>
       <Header/>
-        <List list={todos} key={Math.random()}/>
-        <InputForm/>
+        <List list={todos} key={Math.random()} removeTodos={removeTodos}/>
+        <InputForm addTodos={addTodos}/>
       <Input/>
     </div>
   )
