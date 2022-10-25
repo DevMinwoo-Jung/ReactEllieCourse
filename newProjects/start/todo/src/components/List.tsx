@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import Item from './Item';
 
-const List = () => {
-  const [todos, setTodos] = useState([]);
+interface Todo {
+  list: Object[]
+}
 
-  useEffect(() => {
-    fetch('./mock/todo.json')
-    .then((res) => res.json())
-    .then((data) => {
-      console.log('------get Data-----');
-      setTodos(data);
-    })
-    .catch(() => {
-      console.error('에러났슈')
-    })
-    return () => {
-      console.log('-------Unmount------');
-    };
-}, []);
+const List:FC<Todo> = ({list}) => {
+
+  const data = list;
+
   return (
     <div>
       {
-        todos.map((element:any) => {
+        data.map((element:any) => {
           return <Item data={element}/>
         })
       }
