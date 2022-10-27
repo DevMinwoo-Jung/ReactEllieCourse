@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import LoadingError from '../../components/LoadingError';
 
 const Products = () => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = LoadingError(true);
+  const [isError, setIsError] = LoadingError(false);
 
   const handleChange = () => {
     setChecked((prev) => !prev)
@@ -15,16 +16,15 @@ const Products = () => {
   }
 
   useEffect(() => {
-      setIsLoading(true);
       fetch(`data/${checked ? 'sale_' : ''}products.json`)
       .then((res) => res.json())
       .then((data) => {
         console.log('------get Data-----');
-        setIsLoading(false);
+        setIsLoading();
         setProducts(data);
       })
       .catch(() => {
-        setIsError(true)
+        setIsError()
       })
       return () => {
         console.log('-------Unmount------');
