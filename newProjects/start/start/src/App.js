@@ -1,10 +1,10 @@
 import './App.css';
-import AppTheme from './components/AppTheme';
+import Products from './basic/components/Products'
 
 function App() {
   return (
     <div className="App">
-      <AppTheme/>
+      <Products/>
     </div>
   );
 }
