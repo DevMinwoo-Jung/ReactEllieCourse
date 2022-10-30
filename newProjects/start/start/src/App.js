@@ -1,11 +1,10 @@
 import './App.css';
-import AppMentors from './components/AppMentors';
-import AppMentorsImmer from './components/AppMentorsImmer';
+import AppForm from './components/AppForm';
 
 function App() {
   return (
     <div className="App">
-      <AppMentorsImmer/>
+      <AppForm/>
     </div>
   );
 }
