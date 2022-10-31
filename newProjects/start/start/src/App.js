@@ -1,10 +1,10 @@
 import './App.css';
-import AppForm from './components/AppForm';
+import AppWrap from './components/AppWrap';
 
 function App() {
   return (
     <div className="App">
-      <AppForm/>
+      <AppWrap/>
     </div>
   );
 }
