@@ -52,7 +52,7 @@ const AppMentor = () => {
     //     ]  
     //   });
 
-
+    // 다 바꾸는 버전
     setPerson({...person,
         mentor: person.mentor.map((element) => {
           if(element.name === name) {
@@ -63,6 +63,23 @@ const AppMentor = () => {
       });
       
   }
+
+  const addMentor = () => {
+    const name = prompt('이름');
+    const title = prompt('타이틀');
+    setPerson({
+      ...person,
+      mentor: [...person.mentor, {name, title}]
+    })
+  };
+
+  const removeMentor = () => {
+    const name = prompt('이름');
+    setPerson({
+      ...person,
+      mentor: [...person.mentor.filter((mentor) => mentor.name !== name)]
+    })
+  };
 
   return (
     <div>
@@ -80,6 +97,8 @@ const AppMentor = () => {
         </p>
       </div>
       <button onClick={changePerson}>이름을 뭘로 바꿀거에용</button>
+      <button onClick={addMentor}>멘토 추가</button>
+      <button onClick={removeMentor}>멘토 삭제</button>
     </div>
   )
 }
