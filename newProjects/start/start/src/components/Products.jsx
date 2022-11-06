@@ -13,18 +13,7 @@ const Products = () => {
   }
 
   useEffect(() => {
-    if(checked) {
-      fetch(`data/sale_products.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('------get sale Data-----');
-        setProducts(data);
-      });
-      return () => {
-        console.log('-------Unmount------');
-      };
-    } else {
-      fetch(`data/products.json`)
+      fetch(`data/${checked ? 'sale_' : ''}products.json`)
       .then((res) => res.json())
       .then((data) => {
         console.log('------get Data-----');
@@ -33,7 +22,6 @@ const Products = () => {
       return () => {
         console.log('-------Unmount------');
       };
-    }
   }, [checked]);
 
 
