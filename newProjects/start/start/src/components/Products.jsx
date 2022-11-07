@@ -3,25 +3,44 @@ import React, { useEffect, useState } from 'react'
 const Products = () => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev)
+  }
   const handleCount = () => {
     setCount((prev) => prev + 1);
   }
 
   useEffect(() => {
-    fetch(`data/products.json`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log('------get Data-----');
-      setProducts(data);
-    });
-    return () => {
-      console.log('-------Unmount------');
-    };
-  }, []);
+    if(checked) {
+      fetch(`data/sale_products.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('------get sale Data-----');
+        setProducts(data);
+      });
+      return () => {
+        console.log('-------Unmount------');
+      };
+    } else {
+      fetch(`data/products.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('------get Data-----');
+        setProducts(data);
+      });
+      return () => {
+        console.log('-------Unmount------');
+      };
+    }
+  }, [checked]);
 
 
   return (
     <div>
+      <input id='checkbox' type="checkbox" value={checked} onChange={handleChange} />
+      <label htmlFor="checkbox">show only hot sale 🔥</label>
       <ul>
         {
           products.map((product) => (
