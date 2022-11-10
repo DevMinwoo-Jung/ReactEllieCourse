@@ -1,4 +1,5 @@
 import './App.css';
+import AppCounter from './components/AppCounter';
 import AppProfile from './components/AppProfile';
 import Avatar from './components/Avatar';
 
@@ -26,13 +27,14 @@ function App() {
   console.log(Object.values(profileInfo));
   return (
     <div className="App">
-      {
+      {/* {
         Object.values(profileInfo).map(devInfo => (
           <>
             <AppProfile profileInfo={devInfo} key={devInfo.profileUrl}/>
           </>
         ))
-      }
+      } */}
+      <AppCounter/>
     </div>
   );
 }
