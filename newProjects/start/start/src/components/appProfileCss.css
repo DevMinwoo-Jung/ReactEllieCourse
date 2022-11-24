@@ -1,6 +1,7 @@
 .profileRoot {
   width: 300px;
-  height: 300px;
+  max-height: 300px;
+  min-height: 100px;
   margin: auto;
   margin-bottom: 3rem;
   border: 1px solid black;
@@ -8,31 +9,6 @@
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-
-.profileImgDiv {
-  margin-top: 1rem;
-  position: relative;
-}
-
-.devImg {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-}
-
-.isNew {
-  border-radius: 0.5rem;
-  color: white;
-  border: 1px solid green;
-  background-color: green;
-  width: 50px;
-  position: absolute;
-  top: 10%;
-  left: 70%;
-  padding: 0.2rem 0.5rem;
-  text-transform: uppercase;
-  font:  bolder;
 }
 
 .infoText {

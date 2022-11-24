@@ -1,23 +1,23 @@
 import React from 'react'
 import './appProfileCss.css'
+import Avatar from './Avatar';
 
 const AppProfile = ({ profileInfo }) => {
 
-  const { name, position, isNew, profileUrl } = profileInfo
+  const { name, position, profileUrl, isNew } = profileInfo;
 
   return (
     <div className='profileRoot'>
-      <div className='profileImgDiv'>
-        <img className='devImg' src={profileUrl} alt="" />
-          {
-            isNew 
-            ? <span className='isNew'>New!</span>
-            : ''
-          }
-      </div>
+
       <div className='infoText'>
-        <p>name: {name} 
-        </p>
+        {
+          profileUrl !== ''
+          && profileUrl !== null
+          && profileUrl !== undefined
+          ? <Avatar profileUrl={profileUrl} isNew={isNew} key={profileUrl}/>
+          : ''
+        }
+        <p>name: {name} </p>
         <p>position: {position}</p>
       </div>
     </div>

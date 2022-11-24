@@ -1,5 +1,6 @@
 import './App.css';
 import AppProfile from './components/AppProfile';
+import Avatar from './components/Avatar';
 
 function App() {
   const profileInfo = {
@@ -14,6 +15,12 @@ function App() {
       position: 'front-end',
       isNew: true,
       profileUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
+    },
+    devThree: {
+      name: '푸바푸스',
+      position: '바이킹같당',
+      isNew: false,
+      profileUrl: '',
     }
   }
   console.log(Object.values(profileInfo));
@@ -21,7 +28,9 @@ function App() {
     <div className="App">
       {
         Object.values(profileInfo).map(devInfo => (
-          <AppProfile profileInfo={devInfo} key={devInfo.profileUrl}/>
+          <>
+            <AppProfile profileInfo={devInfo} key={devInfo.profileUrl}/>
+          </>
         ))
       }
     </div>
