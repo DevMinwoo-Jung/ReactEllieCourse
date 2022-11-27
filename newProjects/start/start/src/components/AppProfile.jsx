@@ -7,14 +7,16 @@ const AppProfile = ({ profileInfo }) => {
 
   return (
     <div className='profileRoot'>
-      <img className='devImg' src={profileUrl} alt="" />
+      <div className='profileImgDiv'>
+        <img className='devImg' src={profileUrl} alt="" />
+          {
+            isNew 
+            ? <span className='isNew'>New!</span>
+            : ''
+          }
+      </div>
       <div className='infoText'>
         <p>name: {name} 
-        {
-          isNew 
-          ? <span className='isNew'>New!</span>
-          : ''
-        }
         </p>
         <p>position: {position}</p>
       </div>
