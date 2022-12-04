@@ -1,19 +1,29 @@
 import './App.css';
+import AppProfile from './components/AppProfile';
 
 function App() {
-  const list = ['망고', '빙수', '비싸'];
+  const profileInfo = {
+    devOne: {
+      name: '김아무개',
+      position: 'back-end',
+      isNew: false,
+      profileUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
+    },
+    devTwo: {
+      name: '정민우',
+      position: 'front-end',
+      isNew: true,
+      profileUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
+    }
+  }
+  console.log(Object.values(profileInfo));
   return (
     <div className="App">
       {
-        list.map((item) => (
-          <li>{item}</li>
+        Object.values(profileInfo).map(devInfo => (
+          <AppProfile profileInfo={devInfo} key={devInfo.profileUrl}/>
         ))
-      }     
-      {
-        list.map((item) => {
-          return <li>{item}</li>
-        })
-      }   
+      }
     </div>
   );
 }
