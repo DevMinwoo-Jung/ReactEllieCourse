@@ -41,16 +41,17 @@ const AppMentor = () => {
     }
     const nameIndex = person.mentor.map((element) => element.name).findIndex((element) => element === name);
     const changeName = prompt('뭘로 바꾸고 싶어용');
-    console.log(person.mentor[nameIndex].name)
-    console.log(changeName);
+
     setPerson({...person,
         mentor:
         [
+          ...person.mentor,
           {
-            ...person.mentor, ...person.mentor[nameIndex].name = changeName
+            ...person.mentor[nameIndex].name = changeName
           }
         ]  
       });
+      
   }
 
   return (
