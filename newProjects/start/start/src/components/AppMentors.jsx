@@ -42,14 +42,24 @@ const AppMentor = () => {
     const nameIndex = person.mentor.map((element) => element.name).findIndex((element) => element === name);
     const changeName = prompt('뭘로 바꾸고 싶어용');
 
+    // setPerson({...person,
+    //     mentor:
+    //     [
+    //       ...person.mentor,
+    //       {
+    //         ...person.mentor[nameIndex].name = changeName
+    //       }
+    //     ]  
+    //   });
+
+
     setPerson({...person,
-        mentor:
-        [
-          ...person.mentor,
-          {
-            ...person.mentor[nameIndex].name = changeName
+        mentor: person.mentor.map((element) => {
+          if(element.name === name) {
+            return {...element, name: changeName}
           }
-        ]  
+          return element;
+        })
       });
       
   }
