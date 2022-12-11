@@ -1,36 +1,9 @@
 
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
+import personReducer from '../reducer/person-reducer';
 const AppMentor = () => {
-  const [person, setPerson] = useState({
-    name: 'minwoo',
-    title: 'dev',
-    mentor: [
-      {
-      name: 'bob',
-      title: 'senior dev'
-      },
-      {
-      name: 'na',
-      title: 'naanana'
-      },
-      {
-      name: 'bob',
-      title: 'senior dev'
-      },
-      {
-      name: 'na',
-      title: 'naanana'
-      },
-      {
-      name: 'bob',
-      title: 'senior dev'
-      },
-      {
-      name: 'na',
-      title: 'naanana'
-      }      
-  ],
-  })
+  // const [person, setPerson] = useState(initialValue);
+  const [person, dispatch] = useReducer(personReducer, initialValue);
 
   const changePerson = () => {
     const name = prompt('누구를 바꾸고 싶어용');
@@ -39,46 +12,21 @@ const AppMentor = () => {
     if(isExist.length === 0) {
       return alert('존재하지 않는디');
     }
-    const nameIndex = person.mentor.map((element) => element.name).findIndex((element) => element === name);
+
     const changeName = prompt('뭘로 바꾸고 싶어용');
-
-    // setPerson({...person,
-    //     mentor:
-    //     [
-    //       ...person.mentor,
-    //       {
-    //         ...person.mentor[nameIndex].name = changeName
-    //       }
-    //     ]  
-    //   });
-
-    // 다 바꾸는 버전
-    setPerson({...person,
-        mentor: person.mentor.map((element) => {
-          if(element.name === name) {
-            return {...element, name: changeName}
-          }
-          return element;
-        })
-      });
+    dispatch({type:'update', prev:name, current:changeName })
       
   }
 
   const addMentor = () => {
     const name = prompt('이름');
     const title = prompt('타이틀');
-    setPerson({
-      ...person,
-      mentor: [...person.mentor, {name, title}]
-    })
+    dispatch({type:'add', name, title })
   };
 
   const removeMentor = () => {
     const name = prompt('이름');
-    setPerson({
-      ...person,
-      mentor: [...person.mentor.filter((mentor) => mentor.name !== name)]
-    })
+    dispatch({type:'add', name })
   };
 
   return (
@@ -101,6 +49,37 @@ const AppMentor = () => {
       <button onClick={removeMentor}>멘토 삭제</button>
     </div>
   )
+}
+
+const initialValue = {
+  name: 'minwoo',
+  title: 'dev',
+  mentor: [
+    {
+    name: 'bob',
+    title: 'senior dev'
+    },
+    {
+    name: 'na',
+    title: 'naanana'
+    },
+    {
+    name: 'bob',
+    title: 'senior dev'
+    },
+    {
+    name: 'na',
+    title: 'naanana'
+    },
+    {
+    name: 'bob',
+    title: 'senior dev'
+    },
+    {
+    name: 'na',
+    title: 'naanana'
+    }      
+],
 }
 
 export default AppMentor
