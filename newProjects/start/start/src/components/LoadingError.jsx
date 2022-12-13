@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 
-const LoadingError = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  const handler = () => {
-    setValue((prev) => !prev);
+const LoadingError = (boolValue) => {
+  const param = boolValue;
+  const [value, setValue] = useState(param);
+  const handler = (value) => {
+    setValue(value);
   }
   
   return [value, handler];

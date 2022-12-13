@@ -20,16 +20,16 @@ const Products = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log('------get Data-----');
-        setIsLoading();
         setProducts(data);
+        setIsLoading(false)
       })
       .catch(() => {
-        setIsError()
+        setIsError(true)
       })
       return () => {
         console.log('-------Unmount------');
       };
-  }, [checked]);
+  }, [checked, setIsError, setIsLoading]);
 
   if(isLoading) return <p>로딩중입니다</p>
 
