@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import LoadingError from '../../components/LoadingError';
+import useBoolState from '../../components/useBoolState';
 
 const Products = () => {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState(false);
-  const [isLoading, setIsLoading] = LoadingError(true);
-  const [isError, setIsError] = LoadingError(false);
+  const [isLoading, setIsLoading] = useBoolState(true);
+  const [isError, setIsError] = useBoolState(false);
 
   const handleChange = () => {
     setChecked((prev) => !prev)
