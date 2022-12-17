@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Input from './Input';
+import InputForm from './InputForm';
 import List from './List';
 
 const Main = () => {
@@ -24,7 +25,8 @@ const Main = () => {
   return (
     <div>
       <Header/>
-      <List list={todos}/>
+        <List list={todos} key={Math.random()}/>
+        <InputForm/>
       <Input/>
     </div>
   )

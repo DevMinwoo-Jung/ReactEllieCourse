@@ -13,7 +13,7 @@ const List:FC<Todo> = ({list}) => {
     <div>
       {
         data.map((element:any) => {
-          return <Item data={element}/>
+          return <Item data={element} key={Math.random()}/>
         })
       }
     </div>
