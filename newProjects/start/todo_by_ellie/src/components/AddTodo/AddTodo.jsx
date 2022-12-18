@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddTodo = ({ onAdd }) => {
   const [text, setText] = useState('');
@@ -14,7 +15,7 @@ const AddTodo = ({ onAdd }) => {
       return;
     }
     onAdd({
-      id: Math.random(),
+      id: uuidv4(),
       text,
       status: 'active'
     });
