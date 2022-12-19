@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Header = () => {
+interface HeaderType {
+  setFilter: (e: any) => void,
+}
+
+const Header:FC<HeaderType> = ({setFilter}) => {
+
+  const onFilter = (e: any) => {
+    setFilter(e)
+  }
+
   return (
-    <div>나는 헤더에요옹</div>
+    <div onClick={onFilter}>
+      <span>ALL</span >
+      <span>Done</span >
+      <span>Active</span>
+    </div>
   )
 }
 
