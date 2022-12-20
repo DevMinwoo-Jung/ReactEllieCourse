@@ -6,21 +6,26 @@ import List from './List';
 
 const Main = () => {
   const [todos, setTodos] = useState([]);
-  const [origin, setOrigin] = useState([]);
+  const [todosFilter, setTodosFilter] = useState('ALL');
   
   useEffect(() => {
-    fetch('./mock/todo.json')
-    .then((res) => res.json())
-    .then((data) => {
-      setTodos(data);
-      setOrigin(data);
-    })
-    .catch(() => {
-      console.error('에러났슈')
-    })
-    return () => {
-    };
-}, []);
+      fetch('./mock/todo.json')
+      .then((res) => res.json())
+      .then((data) => {
+        if(todosFilter === 'ALL'){
+          setTodos(data);
+        } else if (todosFilter === 'Active') {
+          setTodos([...data.filter((todo) => todo.isComplete === "false")])
+        } else if (todosFilter === 'Done') {
+          setTodos([...data.filter((todo) => todo.isComplete === "true")])
+        }
+      })
+      .catch(() => {
+        console.error('에러났슈')
+      })
+      return () => {
+      };
+}, [todosFilter]);
 
 const removeTodos = (e) => {
   setTodos([...todos].filter((element) => element.key !== e))
@@ -37,11 +42,11 @@ const changeStatus = (e) => {
 
 const setFilter = (e) => {
   if(e.target.innerText === "Active") {
-    setTodos([...origin.filter((todo) => todo.isComplete === "false")])
+    setTodosFilter("Active");
   } else if(e.target.innerText === "Done") {
-    setTodos([...origin.filter((todo) => todo.isComplete === "true")])
+    setTodosFilter("Done");
   } else {
-    setTodos([...origin]);
+    setTodosFilter("ALL");
   }
 }
 
