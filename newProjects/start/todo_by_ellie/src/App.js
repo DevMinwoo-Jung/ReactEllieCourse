@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { DarkModeProvider } from './components/contetxt/DarkModeContext';
 import Header from './components/Header/Header';
 import TodoLst from './components/TodoList/TodoLst';
 
@@ -10,10 +11,10 @@ function App() {
 
   // 참조가 같다면 useState의 set도 생략 가능 onFilterChange={filter => setFilter(filter)} => setFilter
   return (
-    <div>
+    <DarkModeProvider>
       <Header filters={filters} filter={filter} onFilterChange={setFilter}/>
       <TodoLst filter={filter}/>
-    </div>
+    </DarkModeProvider>
   );
 }
 
