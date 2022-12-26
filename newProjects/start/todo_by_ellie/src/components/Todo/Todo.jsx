@@ -15,8 +15,8 @@ const Todo = ({todo, onUpdate, onDelete}) => {
 
   return (
     <li>
-      <input type="checkbox" id="checkbox" checked={status === 'completed'} onChange={handleChange}/>
-      <label htmlFor="checkbox">{text}</label>
+      <input type="checkbox" id={id} checked={status === 'completed'} onChange={handleChange}/>
+      <label htmlFor={id}>{text}</label>
       <button onClick={handleDelete}><FaTrashAlt/></button>
     </li>
   )

@@ -5,7 +5,8 @@ import Todo from '../Todo/Todo';
 
 const TodoLst = ({ filter }) => {
   const [todos, setTodos] = useState(readTodoFromLocalStorage);
-  // const [todos, setTodos] = useState(() => readTodoFromLocalStorage);
+  // const [todos, setTodos] = useState(() => readTodoFromLocalStorage());
+  // 딱 한번만 호출하고 싶다면... 근데 이게 잘 이해가 안가네
 
   const hadleAdd = (todo) => {
     setTodos([
